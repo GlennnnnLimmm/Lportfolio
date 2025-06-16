@@ -181,30 +181,38 @@ ul li a:hover{
     border-radius: 100%;
 }
 
-@media (width< 750px){
-    nav .checkbox{
-        display: block;
-    }
+@media (width< 750px) {
+  nav .checkbox {
+    display: block;
+    z-index: 101;
+  }
 
-    ul{
-        position: absolute;
-        width: 100%;
-        height: calc(100vh - 85px);
-        left: -100%;
-        top: 85px;
-        background-color: var(--extra-light);  
-        flex-direction: column;
-        justify-content: center;
-        gap: 3rem;
-    }
+  .nav__content input[type="checkbox"]:checked ~ ul {
+    left: 0;
+  }
 
-    nav #check:checked ~ ul{
-        left: 0;
-    }
-    
-    ul li a{
-      font-size: 1.25rem;  
-    }
+  .nav__content ul {
+    position: absolute;
+    top: 85px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 85px);
+    background-color: var(--extra-light);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* ✅ important: centers menu items horizontally */
+    gap: 3rem;
+    display: flex; /* ✅ make sure it's flex! */
+    transition: left 0.3s ease;
+    z-index: 100; /* ✅ make sure it's above background */
+  }
+
+  .nav__content ul li a {
+    font-size: 1.25rem;
+    color: var(--text-dark); /* ✅ in case it's blending into background */
+  }
+}
+
 
     .section__container{
         padding: 10rem 1rem 5rem 1rem;
